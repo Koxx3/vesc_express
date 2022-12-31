@@ -48,7 +48,9 @@ void comm_uart_init(void) {
 			.parity    = UART_PARITY_DISABLE,
 			.stop_bits = UART_STOP_BITS_1,
 			.flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
+#if IDF5			
 			.source_clk = UART_SCLK_DEFAULT,
+#endif			
 	};
 
 	uart_driver_install(UART_NUM, 512, 512, 0, 0, 0);

@@ -224,9 +224,11 @@ void comm_wifi_init(void) {
 						.password = "",
 						.max_connection = 4,
 						.authmode = WIFI_AUTH_WPA_WPA2_PSK,
+#if IDF5			
 						.pmf_cfg = {
 								.required = false,
 						},
+#endif						
 				},
 		};
 

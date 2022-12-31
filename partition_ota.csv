@@ -1,7 +1,10 @@
 # Name,Type,SubType,Offset,Size
 # Note: if you have increased the bootloader size, make sure to update the offsets to avoid overlap,,,
-nvs,data,nvs,,0x6000
-otadata,data,ota,,0x2000
+#
+# reduce NVS to 5000 to avoid overlap with IDF4 bootloader
+#
+nvs,data,nvs,0xC000,0x5000
+otadata,data,ota,0x11000,0x2000
 phy_init,data,phy,,0x1000
-ota_0,app,ota_0,,1500k
-ota_1,app,ota_1,,1500k
+ota_0,app,ota_0,,1700k
+ota_1,app,ota_1,,1700k

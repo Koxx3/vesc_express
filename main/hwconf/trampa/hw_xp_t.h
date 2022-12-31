@@ -22,7 +22,7 @@
 
 #include "driver/gpio.h"
 
-#define HW_NAME						"VESC Express T"
+#define HW_NAME						"VESC Express K"
 
 #define HW_INIT_HOOK()				hw_init()
 
