@@ -188,12 +188,14 @@ void comm_wifi_init(void) {
 
 	wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
 	esp_wifi_init(&cfg);
+	
+	// esp_wifi_set_max_tx_power(2);
 
 	esp_wifi_set_storage(WIFI_STORAGE_RAM);
 
 	// Disable power save mode. Does not work with bluetooth.
 	if (backup.config.ble_mode == BLE_MODE_DISABLED) {
-		esp_wifi_set_ps(WIFI_PS_NONE);
+		// esp_wifi_set_ps(WIFI_PS_NONE);
 	}
 
 	esp_event_handler_instance_t instance_any_id;

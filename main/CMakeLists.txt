@@ -19,6 +19,7 @@ set(COMPONENT_SRCS
 "ublox.c"
 "nmea.c"
 "utils.c"
+"vescdatatypes.c"
 
 "config/confparser.c"
 "config/confxml.c"

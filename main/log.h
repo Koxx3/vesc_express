@@ -26,5 +26,6 @@
 // Functions
 bool log_init(void);
 void log_process_packet(unsigned char *data, unsigned int len);
+void log_start();
 
 #endif /* MAIN_LOG_H_ */

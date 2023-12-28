@@ -92,6 +92,7 @@ typedef enum {
 } HW_TYPE;
 
 // Communication commands
+// Communication commands
 typedef enum {
 	COMM_FW_VERSION = 0,
 	COMM_JUMP_TO_BOOTLOADER,
@@ -267,7 +268,6 @@ typedef enum {
 
 	COMM_LOG_DATA_F64,
 } COMM_PACKET_ID;
-
 // CAN commands
 typedef enum {
 	CAN_PACKET_SET_DUTY = 0,

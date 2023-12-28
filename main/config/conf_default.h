@@ -50,7 +50,7 @@
 
 // Name
 #ifndef CONF_BLE_NAME
-#define CONF_BLE_NAME "ExpressT"
+#define CONF_BLE_NAME "ExpressK"
 #endif
 
 // Bluetooth Pin Code

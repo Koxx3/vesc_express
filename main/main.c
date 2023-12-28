@@ -47,6 +47,22 @@ static void terminal_nmea(int argc, const char **argv);
 static void terminal_ublox_reinit(int argc, const char **argv);
 
 void app_main(void) {
+
+/*
+	// 921600
+const uart_port_t uart_num = UART_NUM_2;
+uart_config_t uart_config = {
+    .baud_rate = 115200,
+    .data_bits = UART_DATA_8_BITS,
+    .parity = UART_PARITY_DISABLE,
+    .stop_bits = UART_STOP_BITS_1,
+    .flow_ctrl = UART_HW_FLOWCTRL_CTS_RTS,
+    .rx_flow_ctrl_thresh = 122,
+};
+// Configure UART parameters
+ESP_ERROR_CHECK(uart_param_config(uart_num, &uart_config));
+*/
+
 	struct timeval tv;
 	gettimeofday(&tv, NULL);
 	tv.tv_sec = 0;
@@ -98,13 +114,14 @@ void app_main(void) {
 	if (backup.config.ble_mode != BLE_MODE_DISABLED) {
 		comm_ble_init();
 	}
-
+		
 	if (backup.config.wifi_mode != WIFI_MODE_DISABLED) {
 		comm_wifi_init();
 	}
 
 	nmea_init();
 	log_init();
+	// log_start();
 
 	HW_INIT_HOOK();
 

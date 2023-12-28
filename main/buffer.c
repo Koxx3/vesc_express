@@ -17,9 +17,33 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     */
 
+
 #include "buffer.h"
 #include <math.h>
 #include <stdbool.h>
+
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "freertos/semphr.h"
+#include "datatypes.h"
+#include "driver/twai.h"
+#include "comm_can.h"
+#include "datatypes.h"
+#include "conf_general.h"
+#include "main.h"
+#include "crc.h"
+#include "packet.h"
+#include "commands.h"
+#include "nmea.h"
+#include <string.h>
+
+void buffer_display(const char *title, uint8_t *buffer, uint32_t size)
+{
+	//printf(title);
+	//for (int i = 0; i < size; i++)
+	//	printf("%02x ", buffer[i]);
+	//printf("(%d)\n", size);
+}
 
 void buffer_append_int16(uint8_t* buffer, int16_t number, int32_t *index) {
 	buffer[(*index)++] = number >> 8;

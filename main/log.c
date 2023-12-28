@@ -97,23 +97,29 @@ static void log_task(void *arg) {
 		}
 
 		if (m_field_num > 0 && !f_log) {
+			printf("x");
+
 			if ((m_append_gnss || m_append_gnss_time) && !date_valid) {
 				vTaskDelay(configTICK_RATE_HZ / 100);
 				continue;
 			}
 
 			if (date_valid) {
+				printf("y");
 				char path[200];
 				sprintf(path,
 						"/sdcard/log_can/date/%02d-%02d-%02d %02d-%02d-%02d.csv",
 						s->rmc.yy, s->rmc.mo, s->rmc.dd, s->rmc.hh, s->rmc.mm, s->rmc.ss);
 				f_log = fopen(path, "w");
+				// printf("\npath = %s / %d\n", path, f_log);
 			} else {
+				printf("z");
 				char path[200];
 				for (int i = 0;i < 999;i++) {
 					sprintf(path, "/sdcard/log_can/no_date/log_%03d.csv", i);
 					if (access(path, F_OK) != 0) {
 						f_log = fopen(path, "w");
+						// printf("\npath = %s / %d\n", path, f_log);
 						break;
 					}
 				}
@@ -175,9 +181,11 @@ static void log_task(void *arg) {
 		}
 
 		if (f_log) {
+			printf("-");
 			for (int i = 0;i < m_field_num;i++) {
 				log_header *h = (log_header*)&m_headers[i];
 				if (h->updated) {
+
 					fprintf(f_log, "%.*f", h->precision, h->value);
 					h->updated = false;
 				}
@@ -366,6 +374,20 @@ bool log_init(void) {
 	(void)log_task;
 	return true;
 #endif
+}
+
+void log_start()
+{
+	mkdir("/sdcard/log_can", 0775);
+	mkdir("/sdcard/log_can/date", 0775);
+	mkdir("/sdcard/log_can/no_date", 0775);
+
+	int32_t ind = 0;
+	m_field_num = 20;
+	m_rate_hz = 10;
+	m_append_time = 0;
+	m_append_gnss = 0;
+	m_append_gnss_time = 0;
 }
 
 void log_process_packet(unsigned char *data, unsigned int len) {

@@ -1,0 +1,5 @@
+{
+    "stm32-for-vscode.openOCDPath": false,
+    "stm32-for-vscode.makePath": "C:\\PROGRAMDATA\\CHOCOLATEY\\BIN\\MAKE.EXE",
+    "stm32-for-vscode.armToolchainPath": false
+}
